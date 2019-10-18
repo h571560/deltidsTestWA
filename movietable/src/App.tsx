@@ -277,8 +277,10 @@ class App extends Component<IOwnprops, IOwnState, HTMLButtonElement>{
           + "&page=" + (i + 1).toString())
           .then(res => res.json())
           .then(this.renderMovies)
-          .then(() =>{this.setState({ loaded: true })})
       }
+      if(this.state.movies.length === this.state.totalRes){this.setState({
+        loaded:true,
+      })}
     })
 
     renderMovies = ((response: any) => {
@@ -300,7 +302,7 @@ class App extends Component<IOwnprops, IOwnState, HTMLButtonElement>{
     }
 
     renderTableHeader() {
-      if (this.state.movies != null && this.state.movies.length > 0) {
+      if (this.state.movies.length > 0) {
         let header = Object.keys(this.state.movies[0])
         delete header[2]
         header.unshift("id")
@@ -357,7 +359,7 @@ class App extends Component<IOwnprops, IOwnState, HTMLButtonElement>{
     }
 
     renderTableData() {
-      if (this.state.movies != null && this.state.movies.length > 0) {
+      if (this.state.movies.length > 0) {
         return this.state.movies.map((movie, index) => {
           const { Title, Year, Type, Poster} = movie
 
@@ -383,7 +385,7 @@ class App extends Component<IOwnprops, IOwnState, HTMLButtonElement>{
 
     render() {
 
-      if (!this.state.loaded || this.state.movies == undefined) {
+      if (!this.state.loaded) {
         return <div className={appStyle}>
           <h1 className={loadingStyle}>Loading...</h1>
         </div>
