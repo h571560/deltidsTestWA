@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/deltidsTestWA/precache-manifest.062032307bbe768123cd3ecb5c2d5868.js"
+  "/deltidsTestWA/precache-manifest.f9f4fb4fc74cdedb13baed9d3ac3625e.js"
 );
 
 self.addEventListener('message', (event) => {
