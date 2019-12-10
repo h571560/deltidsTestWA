@@ -264,7 +264,7 @@ class App extends Component<IOwnprops, IOwnState, HTMLButtonElement>{
 
     handleSubmit(event: FormEvent) {
       this.onClearArray()
-      fetch("http://www.omdbapi.com/?apikey=74987db8&s=" + this.state.keyword)
+      fetch("https://www.omdbapi.com/?apikey=74987db8&s=" + this.state.keyword)
         .then(res => res.json())
         .then(json => {
           this.loadPages(json.totalResults)
@@ -273,7 +273,7 @@ class App extends Component<IOwnprops, IOwnState, HTMLButtonElement>{
 
     loadPages = ((pages: number) => {
       for (let i = 0; i < pages / 10; i++) {
-        fetch("http://www.omdbapi.com/?apikey=74987db8&s=" + this.state.keyword
+        fetch("https://www.omdbapi.com/?apikey=74987db8&s=" + this.state.keyword
           + "&page=" + (i + 1).toString())
           .then(res => res.json())
           .then(this.renderMovies)
@@ -346,7 +346,7 @@ class App extends Component<IOwnprops, IOwnState, HTMLButtonElement>{
     }
 
     renderMovieInfo = (index:number) =>{
-      fetch("http://www.omdbapi.com/?apikey=74987db8&i=" + this.state.movies[index].imdbID)
+      fetch("https://www.omdbapi.com/?apikey=74987db8&i=" + this.state.movies[index].imdbID)
       .then(res => res.json())
       .then(json => {
         this.setState({
